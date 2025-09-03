@@ -1,4 +1,5 @@
 import CreateParcel from "@/pages/sender/CreateParcel"
+import SenderParcels from "@/pages/sender/SenderParcels"
 import type { ISidebarItems } from "@/types/sidebarItems"
 
 export const senderSidebarItems: ISidebarItems[] = [{
@@ -7,18 +8,18 @@ export const senderSidebarItems: ISidebarItems[] = [{
     items: [
         {
             Component: CreateParcel,
-            title: "Create Parcel Request",
+            title: "Create parcel request",
             url: "create-parcel",
         },
         {
-            Component: CreateParcel,
-            title: "Your created parcels",
+            Component: SenderParcels,
+            title: "Parcel details",
             url: "parcels",
         },
         {
             Component: CreateParcel,
-            title: "Status",
-            url: "status",
+            title: "Cancel parcel",
+            url: "cancel-parcel",
         }
     ]
 }]

@@ -1,6 +1,4 @@
 import * as React from "react"
-// import { GalleryVerticalEnd } from "lucide-react"
-
 import {
   Sidebar,
   SidebarContent,
@@ -17,6 +15,7 @@ import {
 import { Link } from "react-router"
 import { useGetUserQuery } from "@/redux/features/auth/auth.api"
 import { generateSidebarItems } from "@/utils/generateSidebarItems"
+import { ModeToggle } from "./mode-toggle"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: userData } = useGetUserQuery(undefined)
@@ -30,17 +29,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            {/* <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GalleryVerticalEnd className="size-4" />
-                </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Documentation</span>
-                  <span className="">v1.0.0</span>
-                </div>
-              </a>
-            </SidebarMenuButton> */}
+            <SidebarMenuButton size="lg" asChild>
+              <ModeToggle />
+            </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>

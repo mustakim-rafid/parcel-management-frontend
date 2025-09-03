@@ -8,17 +8,17 @@ export const receiverSidebarItems: ISidebarItems[] = [{
     {
         Component: IncomingParcels,
         title: "Incoming parcels",
-        url: "parcels",
+        url: "incoming-parcels",
     },
     {
         Component: IncomingParcels,
-        title: "Confirm parcel",
-        url: "confirm-parcel",
+        title: "Requested parcels",
+        url: "requested-parcels",
     },
     {
         Component: IncomingParcels,
-        title: "Status",
-        url: "status",
+        title: "Delivery history",
+        url: "delivery-history",
     }
     ]
 }]

@@ -4,21 +4,21 @@ import type { IResponse } from "@/types/response"
 
 export const authApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        createUser: build.mutation<IResponse, IUser>({
+        createUser: build.mutation<IResponse<any>, IUser>({
             query: (userInfo) => ({
                 url: '/user/register',
                 method: 'POST',
                 data: userInfo
             })
         }),
-        login: build.mutation<IResponse, ILogin>({
+        login: build.mutation<IResponse<any>, ILogin>({
             query: (userInfo) => ({
                 url: '/auth/login',
                 method: 'POST',
                 data: userInfo
             })
         }),
-        logout: build.mutation<IResponse, null>({
+        logout: build.mutation<IResponse<any>, null>({
            query: () => ({
                 url: '/auth/logout',
                 method: 'POST'
@@ -28,9 +28,14 @@ export const authApi = baseApi.injectEndpoints({
             query: () => ({
                 url: '/user'
             })
+        }),
+        getReceiverByEmail: build.query({
+            query: (email) => ({
+                url: `/user/receiver?email=${email}`
+            })
         })
     })
 })
 
-export const { useCreateUserMutation, useLoginMutation, useLogoutMutation, useGetUserQuery } = authApi
+export const { useCreateUserMutation, useLoginMutation, useLogoutMutation, useGetUserQuery, useLazyGetReceiverByEmailQuery } = authApi
 
