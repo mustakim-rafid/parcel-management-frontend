@@ -1,4 +1,4 @@
-import type { Role } from "../auth"
+export type Status = "REQUESTED" | "APPROVED" | "DISPATCHED" | "INTRANSIT" | "DELIVERED"
 
 interface IAddress {
   street: string;
@@ -19,8 +19,25 @@ export interface ISenderParcel {
         from: IAddress;
         to: IAddress;
     };
-    status: Role;
+    status: Status;
     receiverEmail: {
+        email: string;
+    }
+}
+
+export interface IReceiverParcel {
+    _id: string;
+    type: string;
+    weight: string;
+    fee: number;
+    isCanceled: boolean;
+    deliveryDate: Date;
+    address: {
+        from: IAddress;
+        to: IAddress;
+    };
+    status: Status;
+    senderEmail: {
         email: string;
     }
 }

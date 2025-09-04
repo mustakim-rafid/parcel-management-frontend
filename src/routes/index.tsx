@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Navigate to={"parcels"} />
+                element: <Navigate to={"incoming-parcels"} />
             },
             ...generatePaths(receiverSidebarItems)
         ]

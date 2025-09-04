@@ -1,16 +1,39 @@
+import { Button } from "@/components/ui/button"
 import {
   Table,
   TableBody,
   TableCell,
   TableRow,
 } from "@/components/ui/table"
-import type { ISenderParcel } from "@/types/parcel"
+import { useApproveParcelMutation } from "@/redux/features/parcel/parcel.api"
+import type { IReceiverParcel } from "@/types/parcel"
+import { Loader2 } from "lucide-react"
+import { useState } from "react"
+import { useNavigate } from "react-router"
+import { toast } from "sonner"
 
 interface IProps {
-  tableItems: ISenderParcel
+  tableItems: IReceiverParcel
 }
 
-export default function SenderParcelTable({ tableItems }: IProps) {
+export default function ReceiverParcelTable({ tableItems }: IProps) {
+  const [approveParcel] = useApproveParcelMutation()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const navigate = useNavigate()
+
+  const handleApproveParcel = async () => {
+    setIsSubmitting(true)
+    try {
+      const res = await approveParcel(tableItems._id).unwrap()
+      toast.success(res.message)
+      navigate("/dashboard/receiver/incoming-parcels")
+    } catch (err: any) {
+      toast.error(err?.data?.message)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="mx-auto max-w-lg">
       <div className="bg-background overflow-hidden rounded-md border">
@@ -21,9 +44,9 @@ export default function SenderParcelTable({ tableItems }: IProps) {
           <TableBody>
             <TableRow className="*:border-border hover:bg-transparent [&>:not(:last-child)]:border-r">
               <TableCell className="bg-muted/50 py-2 font-medium">
-                Sending to
+                From
               </TableCell>
-              <TableCell className="py-2">{tableItems.receiverEmail.email}</TableCell>
+              <TableCell className="py-2">{tableItems.senderEmail.email}</TableCell>
             </TableRow>
             <TableRow className="*:border-border hover:bg-transparent [&>:not(:last-child)]:border-r">
               <TableCell className="bg-muted/50 py-2 font-medium">
@@ -48,6 +71,19 @@ export default function SenderParcelTable({ tableItems }: IProps) {
                 Status
               </TableCell>
               <TableCell className="py-2">{tableItems.status}</TableCell>
+              { 
+              (tableItems.status === "REQUESTED" && !tableItems.isCanceled) && (
+                <TableCell className="text-center">
+                  <Button className="cursor-pointer" onClick={handleApproveParcel} variant={"outline"}>
+                    { isSubmitting ? (
+                      <>
+                        <Loader2 className="animate-spin" />
+                      </>
+                    ) : "Approve" }
+                  </Button>
+                </TableCell>
+              ) 
+              }
             </TableRow>
             <TableRow className="*:border-border hover:bg-transparent [&>:not(:last-child)]:border-r">
               <TableCell className="bg-muted/50 py-2 font-medium">
@@ -55,7 +91,7 @@ export default function SenderParcelTable({ tableItems }: IProps) {
               </TableCell>
               <TableCell className="py-2">{(new Date(tableItems.deliveryDate).toISOString().slice(0, 10))}</TableCell>
             </TableRow>
-              <TableRow className="*:border-border hover:bg-transparent [&>:not(:last-child)]:border-r">
+            <TableRow className="*:border-border hover:bg-transparent [&>:not(:last-child)]:border-r">
               <TableCell className="bg-muted/50 py-2 font-medium">
                 To
               </TableCell>

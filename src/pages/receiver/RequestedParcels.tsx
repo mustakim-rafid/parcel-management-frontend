@@ -1,10 +1,10 @@
 import { UniversalSkeleton } from "@/components/layout/Skeleton"
 import ReceiverParcelTable from "@/components/modules/receiver/ReceiverParcelTable"
-import { useGetIncomingReceiverParcelsQuery } from "@/redux/features/parcel/parcel.api"
+import { useGetRequestedReceiverParcelsQuery } from "@/redux/features/parcel/parcel.api"
 import type { IReceiverParcel } from "@/types/parcel"
 
-const IncomingParcels = () => {
-  const {data: incomingParcels, isLoading} = useGetIncomingReceiverParcelsQuery(undefined)
+const RequestedParcels = () => {
+  const {data: requestedParcels, isLoading} = useGetRequestedReceiverParcelsQuery(undefined)
 
   if (isLoading) {
     return <UniversalSkeleton />
@@ -13,7 +13,7 @@ const IncomingParcels = () => {
   return (
     <div className="grid md:grid-cols-2 gap-10 md:gap-x-0 m-5">
       {
-        incomingParcels?.data.map((item: IReceiverParcel) => (
+        requestedParcels?.data.map((item: IReceiverParcel) => (
           <div key={item._id}>
             <ReceiverParcelTable tableItems={{...item}} />
           </div>
@@ -23,4 +23,4 @@ const IncomingParcels = () => {
   )
 }
 
-export default IncomingParcels
+export default RequestedParcels
