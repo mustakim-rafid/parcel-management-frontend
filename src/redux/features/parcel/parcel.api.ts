@@ -1,5 +1,5 @@
 import { baseApi } from "@/redux/baseApi"
-import type { ISenderParcel } from "@/types/parcel"
+import type { IReceiverParcel, ISenderParcel } from "@/types/parcel"
 import type { IResponse } from "@/types/response"
 
 export const parcelApi = baseApi.injectEndpoints({
@@ -16,13 +16,19 @@ export const parcelApi = baseApi.injectEndpoints({
                 url: '/parcel/sender-parcels'
             })
         }),
-        getRequestedReceiverParcels: build.query<IResponse<any>, any>({
+        getCancelableParcels: build.query<IResponse<ISenderParcel[]>, any>({
+            query: () => ({
+                url: '/parcel/sender-parcels?isCancelableParcels=true'
+            }),
+            providesTags: ["Parcel"]
+        }),
+        getRequestedReceiverParcels: build.query<IResponse<IReceiverParcel[]>, any>({
             query: () => ({
                 url: "/parcel/receiver-parcels?requested=true"
             }),
             providesTags: ["Parcel"]
         }),
-        getIncomingReceiverParcels: build.query<IResponse<any>, any>({
+        getIncomingReceiverParcels: build.query<IResponse<IReceiverParcel[]>, any>({
             query: () => ({
                 url: "/parcel/receiver-parcels?requested=false"
             }),
@@ -34,9 +40,16 @@ export const parcelApi = baseApi.injectEndpoints({
                 method: 'PATCH'
             }),
             invalidatesTags: ["Parcel"]
+        }),
+        cancelParcel: build.mutation<IResponse<any>, any>({
+            query: (id) => ({
+                url: `parcel/${id}/cancel-parcel`,
+                method: `PATCH`
+            }),
+            invalidatesTags: ["Parcel"]
         })
     })
 })
 
-export const { useCreateParcelMutation, useGetSenderParcelsQuery, useGetRequestedReceiverParcelsQuery, useGetIncomingReceiverParcelsQuery, useApproveParcelMutation } = parcelApi
+export const { useCreateParcelMutation, useGetSenderParcelsQuery, useGetCancelableParcelsQuery, useGetRequestedReceiverParcelsQuery, useGetIncomingReceiverParcelsQuery, useApproveParcelMutation, useCancelParcelMutation } = parcelApi
 

@@ -1,3 +1,4 @@
+import CancelParcel from "@/pages/sender/CancelParcel"
 import CreateParcel from "@/pages/sender/CreateParcel"
 import SenderParcels from "@/pages/sender/SenderParcels"
 import type { ISidebarItems } from "@/types/sidebarItems"
@@ -17,7 +18,7 @@ export const senderSidebarItems: ISidebarItems[] = [{
             url: "parcels",
         },
         {
-            Component: CreateParcel,
+            Component: CancelParcel,
             title: "Cancel parcel",
             url: "cancel-parcel",
         }
