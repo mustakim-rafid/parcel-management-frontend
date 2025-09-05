@@ -11,6 +11,7 @@ import Unauthorized from "@/pages/public/Unauthorized";
 import { withAuth } from "@/utils/withAuth";
 import { role } from "@/constants/role";
 import type { Role } from "@/types/auth";
+import { adminSidebarItems } from "./adminSidebarItems";
 
 export const router = createBrowserRouter([
     {
@@ -31,10 +32,17 @@ export const router = createBrowserRouter([
         Component: Register,
         path: "/register"
     },
-    // {
-    //     Component: Dashboard,
-    //     path: "/dashboard"
-    // },
+    {
+        Component: withAuth(Dashboard, role.ADMIN as Role),
+        path: "/dashboard/admin",
+        children: [
+            {
+                index: true,
+                element: <Navigate to={"all-parcels"} />
+            },
+            ...generatePaths(adminSidebarItems)
+        ]
+    },
     {
         Component: withAuth(Dashboard, role.SENDER as Role),
         path: "/dashboard/sender",

@@ -51,3 +51,23 @@ export interface IDeliveryDetails {
     location: string;
     time: Date
 }
+
+export interface IParcel {
+    _id: string;
+    type: string;
+    weight: string;
+    fee: number;
+    isCanceled: boolean;
+    deliveryDate: Date;
+    address: {
+        from: IAddress;
+        to: IAddress;
+    };
+    status: Status;
+    senderEmail: {
+        email: string;
+    }
+    receiverEmail: {
+        email: string;
+    }
+}

@@ -4,8 +4,6 @@ import { useGetAllReceiverParcelsQuery } from "@/redux/features/parcel/parcel.ap
 const DeliveryDetails = () => {
     const { data: allParcels } = useGetAllReceiverParcelsQuery(undefined)
 
-    console.log(allParcels?.data)
-
   return (
      <div className="grid md:grid-cols-2 gap-10 md:gap-x-0 m-5">
         {
