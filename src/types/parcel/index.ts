@@ -41,3 +41,13 @@ export interface IReceiverParcel {
         email: string;
     }
 }
+
+export interface IDeliveryDetails {
+    _id?: string
+    from: string;
+    type: string;
+    status: Status;
+    note: string;
+    location: string;
+    time: Date
+}

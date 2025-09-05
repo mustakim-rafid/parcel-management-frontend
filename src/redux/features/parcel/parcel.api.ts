@@ -47,9 +47,14 @@ export const parcelApi = baseApi.injectEndpoints({
                 method: `PATCH`
             }),
             invalidatesTags: ["Parcel"]
+        }),
+        getAllReceiverParcels: build.query<IResponse<any>, any>({
+            query: () => ({
+                url: "/parcel/receiver-parcels?allParcels=true"
+            })
         })
     })
 })
 
-export const { useCreateParcelMutation, useGetSenderParcelsQuery, useGetCancelableParcelsQuery, useGetRequestedReceiverParcelsQuery, useGetIncomingReceiverParcelsQuery, useApproveParcelMutation, useCancelParcelMutation } = parcelApi
+export const { useCreateParcelMutation, useGetSenderParcelsQuery, useGetCancelableParcelsQuery, useGetAllReceiverParcelsQuery, useGetRequestedReceiverParcelsQuery, useGetIncomingReceiverParcelsQuery, useApproveParcelMutation, useCancelParcelMutation } = parcelApi
 

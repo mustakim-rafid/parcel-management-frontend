@@ -1,3 +1,4 @@
+import DeliveryDetails from "@/pages/receiver/DeliveryDetails";
 import IncomingParcels from "@/pages/receiver/IncomingParcels";
 import RequestedParcels from "@/pages/receiver/RequestedParcels";
 import type { ISidebarItems } from "@/types/sidebarItems";
@@ -17,7 +18,7 @@ export const receiverSidebarItems: ISidebarItems[] = [{
         url: "requested-parcels",
     },
     {
-        Component: IncomingParcels,
+        Component: DeliveryDetails,
         title: "Delivery history",
         url: "delivery-history",
     }
