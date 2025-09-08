@@ -1,7 +1,9 @@
-import CancelParcel from "@/pages/sender/CancelParcel"
-import CreateParcel from "@/pages/sender/CreateParcel"
-import SenderParcels from "@/pages/sender/SenderParcels"
 import type { ISidebarItems } from "@/types/sidebarItems"
+import { lazy } from "react"
+
+const CancelParcel = lazy(() => import("@/pages/sender/CancelParcel"))
+const CreateParcel = lazy(() => import("@/pages/sender/CreateParcel"))
+const SenderParcels = lazy(() => import("@/pages/sender/SenderParcels"))
 
 export const senderSidebarItems: ISidebarItems[] = [{
     title: "Options",

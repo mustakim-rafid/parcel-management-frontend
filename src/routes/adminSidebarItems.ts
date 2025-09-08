@@ -1,6 +1,8 @@
-import AllParcels from "@/pages/admin/AllParcels"
-import AllUsers from "@/pages/admin/AllUsers"
 import type { ISidebarItems } from "@/types/sidebarItems"
+import { lazy } from "react"
+
+const AllParcels = lazy(() => import("@/pages/admin/AllParcels"))
+const AllUsers = lazy(() => import("@/pages/admin/AllUsers"))
 
 export const adminSidebarItems: ISidebarItems[] = [{
     title: "Options",
