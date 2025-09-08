@@ -13,6 +13,7 @@ import { role } from "@/constants/role";
 import type { Role } from "@/types/auth";
 import { adminSidebarItems } from "./adminSidebarItems";
 import Home from "@/pages/public/Home";
+import Contact from "@/pages/public/Contact";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
             {
                 Component: About,
                 path: "/about"
+            },
+            {
+                Component: Contact,
+                path: "/contact"
             }
         ]
     },

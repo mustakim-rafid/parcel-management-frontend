@@ -4,16 +4,13 @@ const About = () => {
 
   return (
     <div>
-      {/* Intro Section */}
       <div className="flex flex-col items-center justify-center md:py-32 py-10 bg-background text-foreground mx-5">
         <div className="w-full max-w-4xl p-8 bg-card text-card-foreground shadow-lg rounded-lg">
           <div className="flex flex-col gap-8 md:flex-row">
-            {/* Icon / Image */}
             <div className="w-full md:w-1/3 flex justify-center items-center mb-8 md:mb-0">
                 <img className="rounded-lg" src={image} alt="" />
             </div>
 
-            {/* Content */}
             <div className="w-full md:w-2/3 flex flex-col justify-center">
               <h1 className="text-4xl font-bold mb-4">About Us</h1>
               <p className="text-lg mb-4">
@@ -28,7 +25,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Features Section */}
       <section className="py-16 text-muted-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -39,7 +35,6 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Feature 1 */}
             <div className="bg-card p-6 rounded-lg shadow text-center">
               <div className="text-3xl mb-4">⏱️</div>
               <h3 className="text-xl font-bold mb-2 text-card-foreground">Real-Time Tracking</h3>
@@ -48,7 +43,6 @@ const About = () => {
               </p>
             </div>
 
-            {/* Feature 2 */}
             <div className="bg-card p-6 rounded-lg shadow text-center">
               <div className="text-3xl mb-4">🚚</div>
               <h3 className="text-xl font-bold mb-2 text-card-foreground">Flexible Delivery Options</h3>
@@ -57,7 +51,6 @@ const About = () => {
               </p>
             </div>
 
-            {/* Feature 3 */}
             <div className="bg-card p-6 rounded-lg shadow text-center">
               <div className="text-3xl mb-4">🔐</div>
               <h3 className="text-xl font-bold mb-2 text-card-foreground">Secure Handling</h3>
@@ -66,7 +59,6 @@ const About = () => {
               </p>
             </div>
 
-            {/* Feature 4 */}
             <div className="bg-card p-6 rounded-lg shadow text-center">
               <div className="text-3xl mb-4">📞</div>
               <h3 className="text-xl font-bold mb-2 text-card-foreground">24/7 Support</h3>

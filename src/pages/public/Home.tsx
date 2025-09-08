@@ -14,14 +14,11 @@ import { Link } from "react-router"
 export default function Home() {
   return (
     <div className="bg-background text-foreground">
-
-      {/* Hero Section */}
       <section className="md:py-36 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center justify-between gap-20">
-          {/* Text Content */}
           <div className="w-full lg:w-1/2">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Fast. Reliable. Nationwide Parcel Delivery.
+              Fast. <span className="text-primary">Reliable</span>. Nationwide Parcel Delivery.
             </h1>
             <p className="text-lg mb-8 text-muted-foreground">
               Deliver anything, anywhere — track your packages in real-time, schedule pickups, and experience logistics made easy.
@@ -35,8 +32,6 @@ export default function Home() {
               </Button>
             </div>
           </div>
-
-          {/* Hero Image */}
           <div className="w-full lg:w-1/2">
             <img
               src={heroImage}  
@@ -46,8 +41,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* How It Works Section */}
       <section className="py-20 bg-input text-muted-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-extrabold text-foreground mb-4">
@@ -58,7 +51,6 @@ export default function Home() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
-            {/* Step 1 */}
             <Card>
               <CardHeader>
                 <img
@@ -75,7 +67,6 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Step 2 */}
             <Card>
               <CardHeader>
                 <img
@@ -92,7 +83,6 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Step 3 */}
             <Card>
               <CardHeader>
                 <img
@@ -112,7 +102,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action Section */}
       <section className="py-24">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -126,7 +115,6 @@ export default function Home() {
           </Button>
         </div>
       </section>
-
     </div>
   )
 }
