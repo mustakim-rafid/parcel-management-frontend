@@ -1,69 +1,84 @@
-# React + TypeScript + Vite
+# 📦 Parcel Management Frontend System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend application for the Parcel Management System. It provides a user-friendly interface for Admins, Senders, and Receivers to register, login, create parcels, track deliveries, and manage user and parcel information with role-based access control.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Project Overview
 
-## Expanding the ESLint configuration
+The frontend is built to interact seamlessly with the Parcel Management Backend, providing real-time data handling, secure authentication, and responsive UI components. Users can manage parcels, view status logs, approve or cancel deliveries, and update information through an intuitive interface designed for each user role.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🔍 Features Overview
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+* **User Authentication:** Register, login, logout, and token refresh with JWT.
+* **Role-Based Access:** Dynamic UI and route protection for Admin, Sender, and Receiver roles.
+* **Parcel Management:** Create, update, approve, cancel parcels; track status logs.
+* **Responsive Design:** Fully responsive and accessible UI for desktop and mobile.
+* **Real-Time API Interaction:** Efficient state and API data synchronization using RTK Query.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧰 Technology Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* **React** – Frontend UI library for building interactive user interfaces
+* **TypeScript** – Typed superset of JavaScript for better code quality and maintainability
+* **React Router** – Client-side routing for SPA navigation
+* **Redux Toolkit (RTK Query)** – State management and powerful data fetching with caching using Axios
+* **Axios** – HTTP client for API requests
+* **Tailwind CSS** – Utility-first CSS framework for styling and responsiveness
+* **ShadCN UI** – Component library built on top of Tailwind CSS for polished, accessible UI components
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🛠️ Setup Instructions
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <frontend-repo-url>
+   cd <frontend-folder>
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   bun add
+   ```
+
+3. **Environment Variables:**
+
+   Create a `.env` file in the root directory with the following variables:
+
+   ```env
+   VITE_BACKEND_URL=backend_url
+   ```
+
+   (Adjust the API URL according to your backend setup)
+
+4. **Start the development server:**
+
+   ```bash
+   bun dev
+   ```
+
+5. **Build for production:**
+
+   ```bash
+   bun run build
+   ```
+
+---
+
+## 📌 Additional Notes
+
+* **Environment config:** Make sure your backend API is running and accessible via the URL specified in `.env`.
+* **Security:** JWT tokens are stored securely and used to authorize API requests.
+* **Role-aware UI:** Components render or hide features based on user roles fetched after login.
+* **Error handling:** Global and local error states are handled gracefully with user feedback.
+* **Testing:** Consider adding unit and integration tests for critical flows to ensure reliability.
+
+---
+
+Thanks
