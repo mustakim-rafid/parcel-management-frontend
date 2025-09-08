@@ -12,12 +12,17 @@ import { withAuth } from "@/utils/withAuth";
 import { role } from "@/constants/role";
 import type { Role } from "@/types/auth";
 import { adminSidebarItems } from "./adminSidebarItems";
+import Home from "@/pages/public/Home";
 
 export const router = createBrowserRouter([
     {
         Component: App,
         path: "/",
         children: [
+            {
+                Component: Home,
+                path: "/"
+            },
             {
                 Component: About,
                 path: "/about"
