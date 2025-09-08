@@ -6,8 +6,6 @@ import type { IParcel } from '@/types/parcel'
 const AllParcels = () => {
     const {data: allParcels, isLoading} = useGetAllParcelsQuery(undefined)
 
-    console.log(allParcels?.data)
-
     if (isLoading) {
       return <UniversalSkeleton />
     }

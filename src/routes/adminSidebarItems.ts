@@ -1,4 +1,5 @@
 import AllParcels from "@/pages/admin/AllParcels"
+import AllUsers from "@/pages/admin/AllUsers"
 import type { ISidebarItems } from "@/types/sidebarItems"
 
 export const adminSidebarItems: ISidebarItems[] = [{
@@ -6,10 +7,15 @@ export const adminSidebarItems: ISidebarItems[] = [{
     url: "/dashboard/admin",
     items: [
         {
+            Component: AllUsers,
+            title: "All users",
+            url: "users",
+        },
+        {
             Component: AllParcels,
             title: "All parcels",
-            url: "all-parcels",
-        },
+            url: "parcels",
+        }
     ]
 }]
 

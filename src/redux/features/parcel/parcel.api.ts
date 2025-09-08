@@ -56,10 +56,19 @@ export const parcelApi = baseApi.injectEndpoints({
         getAllParcels: build.query<IResponse<any>, any>({
             query: () => ({
                 url: "/parcel"
-            })
+            }),
+            providesTags: ["Parcel"]
+        }),
+        updateParcelStatusLog: build.mutation<IResponse<any>, { id: string, data: any }>({
+            query: ({ id, data }) => ({
+                url: `/parcel/${id}/status-log`,
+                method: 'PATCH',
+                data
+            }),
+            invalidatesTags: ["Parcel"]
         })
     })
 })
 
-export const { useCreateParcelMutation, useGetAllParcelsQuery, useGetSenderParcelsQuery, useGetCancelableParcelsQuery, useGetAllReceiverParcelsQuery, useGetRequestedReceiverParcelsQuery, useGetIncomingReceiverParcelsQuery, useApproveParcelMutation, useCancelParcelMutation } = parcelApi
+export const { useCreateParcelMutation, useGetAllParcelsQuery, useGetSenderParcelsQuery, useGetCancelableParcelsQuery, useGetAllReceiverParcelsQuery, useGetRequestedReceiverParcelsQuery, useGetIncomingReceiverParcelsQuery, useApproveParcelMutation, useCancelParcelMutation, useUpdateParcelStatusLogMutation } = parcelApi
 

@@ -29,13 +29,27 @@ export const authApi = baseApi.injectEndpoints({
                 url: '/user'
             })
         }),
+        getAllUsers: build.query<IResponse<any>, any>({
+            query: () => ({
+                url: 'user/all-users'
+            }),
+            providesTags: ["User"]
+        }),
         getReceiverByEmail: build.query({
             query: (email) => ({
                 url: `/user/receiver?email=${email}`
             })
+        }),
+        updateUser: build.mutation<IResponse<any>, {id: string, data: any}>({
+            query: ({ id, data }) => ({
+                url: `/user/${id}`,
+                method: 'PATCH',
+                data
+            }),
+            invalidatesTags: ["User"]
         })
     })
 })
 
-export const { useCreateUserMutation, useLoginMutation, useLogoutMutation, useGetUserQuery, useLazyGetReceiverByEmailQuery } = authApi
+export const { useCreateUserMutation, useLoginMutation, useLogoutMutation, useGetAllUsersQuery, useGetUserQuery, useLazyGetReceiverByEmailQuery, useUpdateUserMutation } = authApi
 

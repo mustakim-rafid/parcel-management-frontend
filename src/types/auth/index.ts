@@ -21,3 +21,17 @@ export interface ILogin {
 }
 
 export type Role = 'ADMIN' | 'SENDER' | 'RECEIVER'
+
+export interface IShowUser {
+  _id: string
+  name: string;
+  email: string;
+  password: string;
+  role: Role;
+  phone: string;
+  createdAt: Date;
+  updatedAt: Date;
+  isBlocked: boolean;
+  isVerified: boolean;
+  address: IAddress;
+}

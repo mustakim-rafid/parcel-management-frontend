@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Navigate to={"all-parcels"} />
+                element: <Navigate to={"users"} />
             },
             ...generatePaths(adminSidebarItems)
         ]
