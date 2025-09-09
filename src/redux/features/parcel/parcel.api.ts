@@ -9,12 +9,14 @@ export const parcelApi = baseApi.injectEndpoints({
                 url: '/parcel',
                 method: 'POST',
                 data: parcelInfo
-            })
+            }),
+            invalidatesTags: ["Parcel"]
         }),
         getSenderParcels: build.query<IResponse<ISenderParcel[]>, any>({
             query: () => ({
                 url: '/parcel/sender-parcels'
-            })
+            }),
+            providesTags: ["Parcel"]
         }),
         getCancelableParcels: build.query<IResponse<ISenderParcel[]>, any>({
             query: () => ({
