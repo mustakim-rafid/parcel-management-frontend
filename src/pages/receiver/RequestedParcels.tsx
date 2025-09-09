@@ -6,6 +6,8 @@ import type { IReceiverParcel } from "@/types/parcel"
 const RequestedParcels = () => {
   const {data: requestedParcels, isLoading} = useGetRequestedReceiverParcelsQuery(undefined)
 
+  const filteredRequestedParcels = requestedParcels?.data.filter((item: any) => !item.isCanceled)
+
   if (isLoading) {
     return <UniversalSkeleton />
   }
@@ -13,7 +15,7 @@ const RequestedParcels = () => {
   return (
     <div className="grid md:grid-cols-2 gap-10 md:gap-x-0 m-5">
       {
-        requestedParcels?.data.map((item: IReceiverParcel) => (
+        filteredRequestedParcels?.map((item: IReceiverParcel) => (
           <div key={item._id}>
             <ReceiverParcelTable tableItems={{...item}} />
           </div>

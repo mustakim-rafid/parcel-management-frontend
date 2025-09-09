@@ -4,10 +4,12 @@ import { useGetAllReceiverParcelsQuery } from "@/redux/features/parcel/parcel.ap
 const DeliveryDetails = () => {
     const { data: allParcels } = useGetAllReceiverParcelsQuery(undefined)
 
+    const filteredAllParcels = allParcels?.data.filter((item: any) => !item.isCanceled)
+
   return (
      <div className="grid md:grid-cols-2 gap-10 md:gap-x-0 m-5">
         {
-        allParcels?.data.map((item: any) => (
+        filteredAllParcels.map((item: any) => (
             <div key={item._id}>
             <DeliveryDetailsTable tableItems={{
                 from: item.senderEmail?.email,
